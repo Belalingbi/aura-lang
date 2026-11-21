@@ -29,8 +29,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/belal/aura-lang"
-"Bug Tracker" = "https://github.com/belal/aura-lang/issues"
+"Homepage" = "https://github.com/Belalingbi/aura-lang"
+"Bug Tracker" = "https://github.com/Belalingbi/aura-lang/issues"
 
 [project.scripts]
 aura = "aura.cli:main"

@@ -30,7 +30,7 @@ Aura est un langage de programmation moderne, expressif et orienté objet, doté
 
 ### 1. Cloner ou télécharger le dépôt
 ```bash
-git clone https://github.com/belal/aura-lang.git
+git clone https://github.com/Belalingbi/aura-lang.git
 cd aura-lang
 ```
 
@@ -155,14 +155,14 @@ git init
 git add .
 git commit -m "feat: release initiale du langage Aura 1.0.0"
 
-# 3. Liez à votre dépôt distant GitHub (remplacez par votre URL)
-git remote add origin https://github.com/votre-compte/aura-lang.git
+# 3. Liez à votre dépôt distant GitHub
+git remote add origin https://github.com/Belalingbi/aura-lang.git
 git branch -M main
 git push -u origin main
 ```
 
 N'importe quel développeur pourra ensuite l'installer directement avec :
 ```bash
-pip install git+https://github.com/votre-compte/aura-lang.git
+pip install git+https://github.com/Belalingbi/aura-lang.git
 ```
 Et exécuter `aura` directement dans son terminal !
