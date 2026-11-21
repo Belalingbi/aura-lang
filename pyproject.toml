@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aura-lang"
+version = "1.0.0"
+authors = [
+  { name = "Belal", email = "developer@aura-lang.org" },
+]
+description = "Aura Programming Language - Modern, Secure, Dynamic & Concurrent Language"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+keywords = ["programming-language", "compiler", "interpreter", "virtual-machine", "concurrency", "csp"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Compilers",
+    "Topic :: Software Development :: Interpreters",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/belal/aura-lang"
+"Bug Tracker" = "https://github.com/belal/aura-lang/issues"
+
+[project.scripts]
+aura = "aura.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["aura*"]

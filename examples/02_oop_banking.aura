@@ -1,0 +1,36 @@
+// Exemple 02 : Programmation Orientée Objet & Héritage
+
+class CompteBancaire {
+    fn __init__(self, titulaire, solde) {
+        self.titulaire = titulaire
+        self.solde = solde
+    }
+
+    fn deposer(montant) {
+        self.solde = self.solde + montant
+        print(f"[{self.titulaire}] Dépôt de {montant} €. Nouveau solde : {self.solde} €")
+    }
+
+    fn retirer(montant) {
+        if montant > self.solde {
+            print(f"[{self.titulaire}] Solde insuffisant pour retirer {montant} €")
+            return false
+        }
+        self.solde = self.solde - montant
+        print(f"[{self.titulaire}] Retrait de {montant} €. Solde restant : {self.solde} €")
+        return true
+    }
+}
+
+class CompteRemunere extends CompteBancaire {
+    fn appliquerInteret(taux) {
+        gain = self.solde * taux
+        self.solde = self.solde + gain
+        print(f"[{self.titulaire}] Intérêts (+{gain} €) appliqués au taux de {taux * 100}%. Solde : {self.solde} €")
+    }
+}
+
+mon_compte = CompteRemunere("Alice", 1000)
+mon_compte.deposer(500)
+mon_compte.appliquerInteret(0.05)
+mon_compte.retirer(200)

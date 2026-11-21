@@ -1,0 +1,15 @@
+// Exemple 05 : Concurrence CSP avec canaux (AuraChannel)
+
+ch = channel(3)
+
+print("Envoi de messages dans le canal...")
+ch.send("Message Alpha")
+ch.send("Message Beta")
+ch.send("Message Gamma")
+
+print(f"Nombre d'éléments en attente : {ch.len()}")
+
+print("Réception des messages :")
+print(ch.receive())
+print(ch.receive())
+print(ch.receive())

@@ -1,0 +1,175 @@
+// =====================================================================
+// AURA LANGUAGE - SUITE DE TEST GLOBALE ET EXHAUSTIVE
+// =====================================================================
+
+print("=====================================================")
+print("  DÉMARRAGE DE LA SUITE DE TESTS GLOBALE D'AURA 🚀")
+print("=====================================================")
+
+print("\n--- [1] CHAÎNES DE CARACTÈRES ET MÉTHODES TEXTUELLES ---")
+texte_brut = "   Bienvenue dans l'écosystème du langage Aura !   "
+print("Chaîne brute : '" + texte_brut + "'")
+texte_nettoye = texte_brut.trim().toUpperCase()
+print("Après trim() & toUpperCase() : '" + texte_nettoye + "'")
+mots = texte_nettoye.split(" ")
+print("Mots découpés (split) :")
+print(mots)
+print("Commence par 'BIENVENUE' ? " + texte_nettoye.startsWith("BIENVENUE"))
+
+print("\n--- [2] PROGRAMMATION FONCTIONNELLE ET STRUCTURES DE DONNÉES ---")
+nombres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print("Liste d'origine :", nombres)
+
+// map() : élever au carré
+carres = nombres.map(fn(x) { return x * x })
+print("map() [Carrés] :", carres)
+
+// filter() : garder les nombres pairs
+pairs = nombres.filter(fn(x) { return x % 2 == 0 })
+print("filter() [Pairs] :", pairs)
+
+// reduce() : sommer tous les éléments
+somme_totale = nombres.reduce(fn(acc, x) { return acc + x }, 0)
+print("reduce() [Somme] :", somme_totale)
+
+// Ensembles (Sets) et opérations ensemblistes
+set_a = set([1, 2, 3, 4, 5])
+set_b = set([4, 5, 6, 7, 8])
+print("Ensemble A :", set_a)
+print("Ensemble B :", set_b)
+print("Union (A U B) :", set_a.union(set_b))
+print("Intersection (A ∩ B) :", set_a.intersection(set_b))
+
+print("\n--- [3] CONTRÔLE DE FLUX ET OPÉRATEURS LOGIQUES ---")
+age = 25
+possede_permis = true
+est_suspendu = false
+
+if (age >= 18 and possede_permis) and not est_suspendu {
+    print("Condition logique complexe validée : Conduite autorisée !")
+}
+
+// Switch / Case
+niveau_alerte = "warning"
+switch niveau_alerte {
+    case "info":
+    print("Niveau : Information générale.")
+    case "warning":
+    print("Niveau : Avertissement détecté (traitement requis).")
+    default:
+    print("Niveau d'alerte inconnu.")
+}
+
+print("\n--- [4] FONCTIONS, ARGUMENTS VARIABLES (...args) ET DÉCORATEURS ---")
+fn logger(func) {
+    return fn(...args) {
+        print("[DECO LOG] Appel de fonction avec arguments :", args)
+        res = func(...args)
+        print("[DECO LOG] Résultat obtenu :", res)
+        return res
+    }
+}
+
+@logger
+fn sommer_variables(...valeurs) {
+    total = 0
+    for v in valeurs {
+        total = total + v
+    }
+    return total
+}
+
+print("Résultat de l'appel décoré :")
+sommer_variables(10, 20, 30, 40, 50)
+
+print("\n--- [5] PROGRAMMATION ORIENTÉE OBJET & HÉRITAGE (extends) ---")
+class CompteBancaire {
+    fn __init__(self, titulaire, solde) {
+        self.titulaire = titulaire
+        self.solde = solde
+    }
+
+    fn deposer(montant) {
+        self.solde = self.solde + montant
+        print(self.titulaire + " a déposé " + montant + " €. Solde : " + self.solde + " €.")
+    }
+}
+
+class CompteEpargne extends CompteBancaire {
+    fn appliquerInterets() {
+        interets = self.solde * 0.05
+        self.solde = self.solde + interets
+        print("Intérêts appliqués pour " + self.titulaire + ". Nouveau solde : " + self.solde + " €.")
+    }
+}
+
+mon_compte = CompteEpargne("Alice", 1000)
+mon_compte.deposer(500)
+mon_compte.appliquerInterets()
+
+print("\n--- [6] GÉNÉRATEURS ET MOT-CLÉ YIELD ---")
+fn sequence_fibonacci(limite) {
+    a = 0
+    b = 1
+    count = 0
+    while count < limite {
+        yield a
+        temp = a + b
+        a = b
+        b = temp
+        count = count + 1
+    }
+}
+
+fib = sequence_fibonacci(5)
+print("Valeurs générées par le générateur de Fibonacci :")
+print(fib.next())
+print(fib.next())
+print(fib.next())
+print(fib.next())
+print(fib.next())
+print(fib.next()) // nil (fin)
+
+print("\n--- [7] MODULES NATIFS (math, time, random, http) ---")
+print("Constante Pi :", math.pi)
+print("Racine carrée de 1024 :", math.sqrt(1024))
+print("Timestamp actuel :", time.timestamp())
+
+de = random.randint(1, 6)
+print("Lancer de dé aléatoire (1-6) :", de)
+
+// Requête HTTP GET test
+print("Interrogation d'une API distante (http.get)...")
+reponse_http = http.get("https://jsonplaceholder.typicode.com/todos/1")
+if reponse_http.ok {
+    print("Requête HTTP réussie ! Statut :", reponse_http.status)
+    donnees = jsonParse(reponse_http.body)
+    print("Titre récupéré depuis l'API :", donnees.title)
+}
+
+print("\n--- [8] GESTION DES EXCEPTIONS (try / catch / finally) & BENCHMARK ---")
+try {
+    print("Tentative d'une opération risquée...")
+    throw "Erreur critique de test !"
+} catch (err) {
+    print("-> Erreur interceptée par le catch :", err)
+} finally {
+    print("[FINALLY] Bloc de nettoyage exécuté systématiquement.")
+}
+
+// Benchmark de performance
+print("\nMesure de performance (benchmark) d'une boucle :")
+benchmark(fn() {
+    i = 0
+    while i < 5000 {
+        i = i + 1
+    }
+}, 20)
+
+// Tests unitaires avec assert
+assert(10 + 10 == 20, "Les mathématiques fonctionnent !")
+assert(carres.len() == 10, "La longueur de la liste des carrés est correcte.")
+
+print("\n=====================================================")
+print("  TOUS LES TESTS D'AURA ONT RÉUSSI AVEC SUCCÈS ! 🎉")
+print("=====================================================")

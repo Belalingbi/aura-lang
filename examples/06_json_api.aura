@@ -1,0 +1,16 @@
+// Exemple 06 : Manipulation JSON et API Web
+
+payload = {
+    "langage": "Aura",
+    "version": "1.0.0",
+    "features": ["POO", "Bytecode VM", "CSP Concurrency", "GC"]
+}
+
+chaine_json = jsonStringify(payload)
+print("JSON sérialisé :")
+print(chaine_json)
+
+donnees = jsonParse(chaine_json)
+print(f"Propriété 'langage' : {donnees.langage}")
+print(f"Propriété 'version' : {donnees.version}")
+print(f"Fonctionnalités : {donnees.features}")

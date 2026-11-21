@@ -1,0 +1,11 @@
+// Exemple 01 : Hello World & Variables en Aura
+
+print("Hello, World! Bienvenue dans le langage Aura 🌟")
+
+nom = "Développeur"
+mut score = 100
+
+print(f"Utilisateur : {nom}, Score initial : {score}")
+
+score = score + 50
+print(f"Score après bonus : {score}")

@@ -1,0 +1,6 @@
+{
+  "name": "aura-lang",
+  "version": "1.0.0",
+  "description": "Langage de programmation Aura - Moteur d'exécution, REPL, VM & Suite d'outils",
+  "main": "main.aura"
+}

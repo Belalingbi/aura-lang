@@ -1,0 +1,58 @@
+// ==========================================
+// AURA LANGUAGE - POINT D'ENTRÉE PRINCIPAL
+// ==========================================
+
+print("=====================================================")
+print("  BIENVENUE DANS LE RUNTIME AURA 🌟")
+print("=====================================================")
+
+// 1. Syntaxe moderne et typage dynamique
+mut version = "1.0.0"
+nom_langage = "Aura"
+print(f"Initialisation de {nom_langage} (version {version})...")
+
+// 2. Définition de fonctions et lambdas
+fn calculer_puissance(base, exposant) {
+    mut res = 1
+    mut i = 0
+    while i < exposant {
+        res = res * base
+        i = i + 1
+    }
+    return res
+}
+
+print(f"Calcul de 2^8 = {calculer_puissance(2, 8)}")
+
+// 3. Programmation Orientée Objet
+class Serveur {
+    fn __init__(self, port, nom) {
+        self.port = port
+        self.nom = nom
+        self.en_ligne = false
+    }
+
+    fn demarrer() {
+        self.en_ligne = true
+        print(f"🚀 Serveur '{self.nom}' démarré sur le port {self.port} avec succès !")
+    }
+
+    fn statut() {
+        return self.en_ligne ? "Actif" : "Inactif"
+    }
+}
+
+srv = Serveur(8080, "Aura Gateway Service")
+srv.demarrer()
+print(f"Statut actuel du serveur : {srv.statut()}")
+
+// 4. Collections et programmation fonctionnelle
+liste = [10, 20, 30, 40, 50]
+doubles = liste.map(fn(x) { return x * 2 })
+print(f"Liste d'origine : {liste}")
+print(f"Doubles (map)   : {doubles}")
+
+print("\n✔ Le projet Aura s'exécute parfaitement !")
+print("  Pour lancer la suite de tests complète : python cli.py run test_global.aura")
+print("  Pour démarrer le REPL interactif       : python cli.py repl")
+print("=====================================================")

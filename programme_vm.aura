@@ -1,0 +1,24 @@
+// =====================================================================
+// PROGRAMME VM D'AURA (programme_vm.aura)
+// Exécuté directement par le Compilateur Bytecode et la Machine Virtuelle
+// =====================================================================
+
+print("--- Démarrage de l'exécution sur la VM d'Aura ---")
+a = 15
+b = 27
+c = a + b
+print("Résultat de l'addition (15 + 27) :")
+print(c)
+
+print("Test de la soustraction (42 - 10) :")
+diff = c - 10
+print(diff)
+
+print("Test de boucle conditionnelle sur la VM :")
+compteur = 0
+while compteur < 3 {
+    print("Tour de VM n° " + compteur)
+    compteur = compteur + 1
+}
+
+print("Fin du programme VM avec succès ! 🚀")

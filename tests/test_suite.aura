@@ -1,0 +1,125 @@
+// =====================================================================
+// AURA LANGUAGE - SUITE DE VALIDATION UNITAIRE (tests/test_suite.aura)
+// =====================================================================
+
+print("--- [TEST 1] Arithmétique, Logique & Opérateurs ---")
+assert(2 + 3 * 4 == 14, "Priorité des opérateurs arithmétiques")
+assert((10 - 4) / 2 == 3, "Parenthésage arithmétique")
+assert(10 % 3 == 1, "Modulo")
+assert(true and true, "Opérateur and")
+assert(not (false or false), "Opérateur not et or")
+assert(10 > 5 and 5 >= 5 and 2 < 8 and 3 <= 3, "Opérateurs de comparaison")
+assert(10 != 20 and 5 == 5, "Égalité et inégalité")
+
+print("--- [TEST 2] Chaînes et Interpolation (F-Strings) ---")
+prenom = "Aura"
+score = 100
+assert(f"Bienvenue sur {prenom} avec {score} points !" == "Bienvenue sur Aura avec 100 points !", "F-String")
+assert("   bonjour   ".trim() == "bonjour", "trim string")
+assert("aura".toUpperCase() == "AURA", "toUpperCase")
+assert("AURA".toLowerCase() == "aura", "toLowerCase")
+assert("alpha,beta,gamma".split(",").len() == 3, "split string")
+assert("antigravity".startsWith("anti"), "startsWith")
+assert("antigravity".endsWith("vity"), "endsWith")
+
+print("--- [TEST 3] Listes, Compréhensions et Dictionnaires ---")
+nombres = [1, 2, 3, 4, 5]
+assert(nombres.len() == 5, "Longueur de liste")
+assert(nombres[0] == 1 and nombres[4] == 5, "Indexation de liste")
+nombres[0] = 99
+assert(nombres[0] == 99, "Modification de liste")
+
+// List comprehension
+carres = [x * x for x in [1, 2, 3, 4] if x > 2]
+assert(carres.len() == 2, "Taille de la liste en compréhension")
+assert(carres[0] == 9 and carres[1] == 16, "Valeurs de la compréhension")
+
+// Dictionnaire
+utilisateur = {"nom": "Alice", "role": "Admin", "score": 95}
+assert(utilisateur.get("nom") == "Alice", "Accès dictionnaire get")
+assert(utilisateur["role"] == "Admin", "Indexation dictionnaire")
+assert(utilisateur.contains("score"), "Dictionnaire contains")
+
+print("--- [TEST 4] Programmation Orientée Objet & Héritage ---")
+class Forme {
+    fn __init__(self, nom) {
+        self.nom = nom
+    }
+    fn description() {
+        return f"Forme géométrique : {self.nom}"
+    }
+}
+
+class Rectangle extends Forme {
+    fn __init__(self, largeur, hauteur) {
+        self.nom = "Rectangle"
+        self.largeur = largeur
+        self.hauteur = hauteur
+    }
+    fn aire() {
+        return self.largeur * self.hauteur
+    }
+}
+
+rect = Rectangle(4, 5)
+assert(rect.aire() == 20, "Calcul d'aire méthode Rectangle")
+assert(rect.description() == "Forme géométrique : Rectangle", "Méthode héritée Forme")
+
+print("--- [TEST 5] Fonctions, Récursion, Closures & Varargs ---")
+fn factorielle(n) {
+    if n <= 1 {
+        return 1
+    }
+    return n * factorielle(n - 1)
+}
+assert(factorielle(5) == 120, "Récursion factorielle")
+
+fn createur_compteur(initial) {
+    mut valeur = initial
+    return fn() {
+        valeur = valeur + 1
+        return valeur
+    }
+}
+compteur = createur_compteur(10)
+assert(compteur() == 11, "Closure appel 1")
+assert(compteur() == 12, "Closure appel 2")
+
+fn additionner_tout(...args) {
+    mut sum = 0
+    for val in args {
+        sum = sum + val
+    }
+    return sum
+}
+assert(additionner_tout(1, 2, 3, 4, 5) == 15, "Varargs ...args")
+
+print("--- [TEST 6] Exceptions (try / catch / finally / throw) ---")
+mut catch_execute = false
+mut finally_execute = false
+try {
+    throw "Erreur intentionnelle"
+} catch (e) {
+    catch_execute = true
+} finally {
+    finally_execute = true
+}
+assert(catch_execute, "Bloc catch exécuté")
+assert(finally_execute, "Bloc finally exécuté")
+
+print("--- [TEST 7] Ensembles (Sets) ---")
+s1 = set([1, 2, 3])
+s2 = set([3, 4, 5])
+assert(s1.union(s2).len() == 5, "Union de sets")
+assert(s1.intersection(s2).len() == 1, "Intersection de sets")
+
+print("--- [TEST 8] Modules Natifs (math, time, json) ---")
+assert(math.sqrt(16) == 4, "math.sqrt")
+assert(math.floor(3.9) == 3, "math.floor")
+assert(math.ceil(3.1) == 4, "math.ceil")
+
+json_str = jsonStringify({"version": 1, "ok": true})
+parsed = jsonParse(json_str)
+assert(parsed.get("version") == 1 and parsed.get("ok") == true, "JSON roundtrip")
+
+print("🎉 TOUTES LES ASSERTIONS DU TEST SUITE ONT ÉTÉ VALIDÉES AVEC SUCCÈS !")
